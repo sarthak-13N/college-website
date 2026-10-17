@@ -4,12 +4,591 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ABC College | Home</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #263448;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Top Header */
+        .top-header {
+            background: #142b45;
+            color: white;
+            padding: 12px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        /* College Branding */
+        .college-header {
+            padding: 22px 8%;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: white;
+        }
+
+        .college-logo {
+            width: 70px;
+            height: 70px;
+            border: 2px solid #b39455;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #142b45;
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .college-name h1 {
+            font-family: Georgia, serif;
+            font-size: 27px;
+            color: #142b45;
+        }
+
+        .college-name p {
+            font-size: 13px;
+            color: #777;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #142b45;
+            padding: 0 8%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 16px 18px;
+            font-size: 14px;
+            display: block;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #b39455;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 490px;
+            background: linear-gradient(90deg,
+                    rgba(13, 34, 56, 0.94),
+                    rgba(13, 34, 56, 0.65)),
+                url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=85") center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            padding: 70px 8%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-content .subtitle {
+            color: #e3c47e;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(36px, 5vw, 54px);
+            line-height: 1.2;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            max-width: 590px;
+            font-size: 16px;
+            color: #e5eaf0;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 25px;
+            margin: 5px 10px 5px 0;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid #c6a45f;
+            transition: 0.3s;
+        }
+
+        .button-gold {
+            background: #b39455;
+            color: white;
+        }
+
+        .button-outline {
+            color: white;
+            background: transparent;
+        }
+
+        .button:hover {
+            background: white;
+            color: #142b45;
+            border-color: white;
+        }
+
+        /* Notice Bar */
+        .notice {
+            background: #f3eee2;
+            padding: 16px 8%;
+            border-bottom: 1px solid #e1d7c3;
+        }
+
+        .notice strong {
+            color: #142b45;
+            margin-right: 12px;
+        }
+
+        .notice span {
+            color: #665b49;
+            font-size: 14px;
+        }
+
+        /* Common Sections */
+        .section {
+            padding: 65px 8%;
+            text-align: center;
+        }
+
+        .section-heading {
+            font-family: Georgia, serif;
+            font-size: 34px;
+            color: #142b45;
+            margin-bottom: 10px;
+        }
+
+        .gold-line {
+            width: 65px;
+            height: 3px;
+            background: #b39455;
+            margin: 15px auto 25px;
+        }
+
+        .section-intro {
+            max-width: 720px;
+            margin: 0 auto 35px;
+            color: #687384;
+            font-size: 15px;
+        }
+
+        /* About */
+        .about {
+            background: #ffffff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            text-align: left;
+        }
+
+        .about-card {
+            padding: 28px;
+            background: #f8f9fb;
+            border: 1px solid #e2e6eb;
+            border-top: 3px solid #b39455;
+        }
+
+        .about-card h3 {
+            color: #142b45;
+            margin-bottom: 12px;
+            font-family: Georgia, serif;
+            font-size: 21px;
+        }
+
+        .about-card p {
+            color: #687384;
+            font-size: 14px;
+        }
+
+        /* Courses */
+        .courses {
+            background: #f4f6f9;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 28px 22px;
+            border: 1px solid #e0e5eb;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 22px rgba(20, 43, 69, 0.09);
+        }
+
+        .course-number {
+            color: #b39455;
+            font-family: Georgia, serif;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .course-card h3 {
+            color: #142b45;
+            margin: 10px 0;
+        }
+
+        .course-card p {
+            font-size: 14px;
+            color: #687384;
+        }
+
+        /* Admission Section */
+        .admission {
+            background: #142b45;
+            color: white;
+            padding: 55px 8%;
+            text-align: center;
+        }
+
+        .admission h2 {
+            font-family: Georgia, serif;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .admission p {
+            color: #dce4ed;
+            margin-bottom: 22px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d1e31;
+            color: #d5dce5;
+            padding: 40px 8% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 35px;
+            margin-bottom: 30px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-family: Georgia, serif;
+        }
+
+        footer p,
+        footer a {
+            font-size: 14px;
+            color: #c4ceda;
+        }
+
+        footer a {
+            display: block;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+
+        footer a:hover {
+            color: #e3c47e;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #344457;
+            padding-top: 18px;
+            font-size: 12px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .top-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+            }
+
+            .college-header {
+                padding: 20px 5%;
+            }
+
+            .college-name h1 {
+                font-size: 21px;
+            }
+
+            .college-name p {
+                font-size: 11px;
+            }
+
+            nav {
+                padding: 5px;
+                justify-content: center;
+            }
+
+            nav a {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 420px;
+                padding: 55px 7%;
+            }
+
+            .about-grid,
+            .course-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 45px 7%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>welcome to our college</h1>
-    <h2>this is home page</h2>
+
+    <!-- Top Header -->
+    <div class="top-header">
+        <p>Welcome to ABC College</p>
+        <p>Excellence in Education Since 1995</p>
+    </div>
+
+    <!-- College Name and Logo -->
+    <header class="college-header">
+        <div class="college-logo">ABC</div>
+
+        <div class="college-name">
+            <h1>ABC College of Education</h1>
+            <p>KNOWLEDGE • DISCIPLINE • EXCELLENCE</p>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#courses">Courses</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Main Banner -->
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+
+                <p class="subtitle">LEARN TODAY, LEAD TOMORROW</p>
+
+                <h2>Building Bright Futures Through Quality Education</h2>
+
+                <p>
+                    Welcome to ABC College, where knowledge meets opportunity.
+                    We are committed to academic excellence, personal growth,
+                    and preparing students for a successful future.
+                </p>
+
+                <a href="#courses" class="button button-gold">
+                    Explore Courses
+                </a>
+
+                <a href="#about" class="button button-outline">
+                    Discover Our College
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Notice Section -->
+        <section class="notice">
+            <strong>COLLEGE NOTICE</strong>
+            <span>
+                Admissions information and academic announcements
+                are available through the college administration.
+            </span>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about" id="about">
+
+            <h2 class="section-heading">Welcome to Our College</h2>
+            <div class="gold-line"></div>
+
+            <p class="section-intro">
+                Our institution provides a supportive learning environment
+                where students develop knowledge, practical skills,
+                confidence, and professional values.
+            </p>
+
+            <div class="about-grid">
+
+                <div class="about-card">
+                    <h3>Our Vision</h3>
+                    <p>
+                        To become a respected institution known for
+                        quality education, innovation, and student success.
+                    </p>
+                </div>
+
+                <div class="about-card">
+                    <h3>Our Mission</h3>
+                    <p>
+                        To provide accessible education and encourage
+                        critical thinking, creativity, and lifelong learning.
+                    </p>
+                </div>
+
+                <div class="about-card">
+                    <h3>Our Values</h3>
+                    <p>
+                        We believe in integrity, discipline, respect,
+                        teamwork, and continuous improvement.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section class="section courses" id="courses">
+
+            <h2 class="section-heading">Our Academic Programs</h2>
+            <div class="gold-line"></div>
+
+            <p class="section-intro">
+                Explore academic programs designed to support
+                your educational and career goals.
+            </p>
+
+            <div class="course-grid">
+
+                <div class="course-card">
+                    <div class="course-number">01</div>
+                    <h3>Arts</h3>
+                    <p>
+                        Develop communication, analytical thinking,
+                        creativity, and a deeper understanding of society.
+                    </p>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-number">02</div>
+                    <h3>Commerce</h3>
+                    <p>
+                        Learn the foundations of accounting, business,
+                        economics, and financial management.
+                    </p>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-number">03</div>
+                    <h3>Computer Science</h3>
+                    <p>
+                        Explore programming, software development,
+                        databases, and modern computing technologies.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Admission Section -->
+        <section class="admission" id="admissions">
+
+            <h2>Begin Your Academic Journey</h2>
+
+            <p>
+                Take the next step towards your future.
+                Contact our college office for admission details.
+            </p>
+
+            <a href="#contact" class="button button-gold">
+                Enquire Now
+            </a>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>ABC College of Education</h3>
+                <p>
+                    Dedicated to learning, academic excellence,
+                    and the overall development of students.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#courses">Academic Programs</a>
+                <a href="#admissions">Admissions</a>
+            </div>
+
+            <div>
+                <h3>Contact Us</h3>
+                <p>Address: Your College Address</p>
+                <p>Email: college@example.com</p>
+                <p>Phone: +91 XXXXX XXXXX</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>
+                &copy; 2026 ABC College of Education.
+                All Rights Reserved.
+            </p>
+        </div>
+
+    </footer>
+
 </body>
 
 </html>
