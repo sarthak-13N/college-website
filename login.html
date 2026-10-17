@@ -1,2 +1,872 @@
-<h1>login page
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Portal | Sign In</title>
+
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px 15px;
+        background: linear-gradient(135deg, #F5F0FA, #EDE5F5, #FAF7FC);
+    }
+
+    button, input, select {
+        font: inherit;
+    }
+
+    .container {
+        display: flex;
+        width: 960px;
+        max-width: 100%;
+        min-height: 600px;
+        background: #FFFFFF;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 24px 65px rgba(75, 49, 94, 0.14);
+        border: 1px solid rgba(118, 81, 138, 0.15);
+    }
+
+    /* LEFT WELCOME SECTION */
+
+    .welcome-panel {
+        width: 42%;
+        padding: 45px 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #FFFFFF;
+        background: linear-gradient(150deg, #352142, #4B315E, #68477A);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .welcome-panel::before {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border: 1px solid rgba(216, 185, 234, 0.25);
+        border-radius: 50%;
+        top: -120px;
+        right: -120px;
+    }
+
+    .welcome-panel::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid rgba(216, 185, 234, 0.18);
+        border-radius: 50%;
+        bottom: -90px;
+        left: -80px;
+    }
+
+    .college-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        background: rgba(216, 185, 234, 0.13);
+        border: 1px solid rgba(216, 185, 234, 0.45);
+        margin-bottom: 25px;
+        color: #E6CFF5;
+        position: relative;
+        z-index: 1;
+    }
+
+    .welcome-panel h1 {
+        font-size: 32px;
+        line-height: 1.4;
+        margin-bottom: 15px;
+        color: #FFFFFF;
+        position: relative;
+        z-index: 1;
+    }
+
+    .welcome-panel p {
+        color: #E9DFF0;
+        font-size: 14px;
+        line-height: 1.9;
+        position: relative;
+        z-index: 1;
+    }
+
+    .features {
+        list-style: none;
+        margin-top: 30px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .features li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+        font-size: 13px;
+        color: #F7F2FA;
+    }
+
+    .check {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(216, 185, 234, 0.15);
+        border: 1px solid rgba(216, 185, 234, 0.4);
+        color: #E6CFF5;
+        flex-shrink: 0;
+    }
+
+    .welcome-bottom {
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 185, 234, 0.28);
+        font-size: 12px;
+        color: #D8C9E2;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* RIGHT FORM SECTION */
+
+    .form-panel {
+        width: 58%;
+        padding: 40px 48px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #FFFFFF;
+    }
+
+    .form-header {
+        margin-bottom: 22px;
+    }
+
+    .form-header h2 {
+        color: #40294F;
+        font-size: 29px;
+        margin-bottom: 9px;
+    }
+
+    .form-header p {
+        color: #797180;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* TABS */
+
+    .tabs {
+        display: flex;
+        background: #F4EFF8;
+        border: 1px solid #E7DCEE;
+        border-radius: 10px;
+        padding: 5px;
+        margin-bottom: 23px;
+    }
+
+    .tab {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: transparent;
+        color: #796987;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .tab.active {
+        background: #4B315E;
+        color: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(75, 49, 94, 0.2);
+    }
+
+    /* INPUT FIELDS */
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        color: #493B51;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #E2D9E9;
+        border-radius: 9px;
+        background: #FCFAFE;
+        color: #392D40;
+        font-size: 13px;
+        outline: none;
+        transition: all 0.25s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #9572AD;
+        box-shadow: 0 0 0 3px rgba(149, 114, 173, 0.15);
+        background: #FFFFFF;
+    }
+
+    .form-group input::placeholder {
+        color: #A79BAD;
+    }
+
+    /* PASSWORD */
+
+    .password-box {
+        position: relative;
+    }
+
+    .password-box input {
+        padding-right: 60px;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: transparent;
+        color: #76518A;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .toggle-password:hover {
+        color: #4B315E;
+    }
+
+    /* FORM OPTIONS */
+
+    .form-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin: 5px 0 20px;
+        font-size: 12px;
+    }
+
+    .remember {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #797180;
+    }
+
+    .remember input,
+    .terms input {
+        accent-color: #76518A;
+    }
+
+    .text-link {
+        color: #76518A;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .text-link:hover {
+        color: #4B315E;
+        text-decoration: underline;
+    }
+
+    /* SUBMIT BUTTON */
+
+    .submit-btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 9px;
+        background: linear-gradient(110deg, #4B315E, #76518A);
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(110deg, #352142, #5B3B70);
+        box-shadow: 0 8px 20px rgba(75, 49, 94, 0.22);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+
+    /* TERMS */
+
+    .terms {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        color: #797180;
+        font-size: 12px;
+        line-height: 1.6;
+        margin: 5px 0 18px;
+    }
+
+    .terms input {
+        margin-top: 3px;
+        flex-shrink: 0;
+    }
+
+    /* FEEDBACK MESSAGES */
+
+    .message {
+        display: none;
+        padding: 11px;
+        border-radius: 8px;
+        font-size: 12px;
+        line-height: 1.6;
+        margin-top: 15px;
+        overflow-wrap: anywhere;
+    }
+
+    .message.error {
+        display: block;
+        background: #FFF0F0;
+        color: #A52A45;
+        border: 1px solid #F2D1D9;
+    }
+
+    .message.success {
+        display: block;
+        background: #F0F8F0;
+        color: #27633C;
+        border: 1px solid #D0E8D2;
+    }
+
+    /* FOOTER */
+
+    .footer {
+        margin-top: 20px;
+        text-align: center;
+        color: #9A92A0;
+        font-size: 11px;
+        line-height: 1.8;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    /* TABLET AND MOBILE */
+
+    @media (max-width: 760px) {
+        .container {
+            max-width: 480px;
+            flex-direction: column;
+        }
+
+        .welcome-panel,
+        .form-panel {
+            width: 100%;
+        }
+
+        .welcome-panel {
+            padding: 28px;
+        }
+
+        .welcome-panel h1 {
+            font-size: 26px;
+        }
+
+        .college-icon {
+            width: 55px;
+            height: 55px;
+            font-size: 30px;
+            margin-bottom: 16px;
+        }
+
+        .features {
+            margin-top: 18px;
+        }
+
+        .features li {
+            margin-bottom: 10px;
+        }
+
+        .welcome-bottom {
+            margin-top: 10px;
+        }
+
+        .form-panel {
+            padding: 30px 25px;
+        }
+    }
+
+    @media (max-width: 380px) {
+        .form-panel {
+            padding: 25px 18px;
+        }
+
+        .form-options {
+            flex-wrap: wrap;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- WELCOME SECTION -->
+
+        <section class="welcome-panel">
+            <div class="college-icon">🎓</div>
+
+            <h1>Your Future<br>Starts Here.</h1>
+
+            <p>
+                Welcome to your college portal. Access your academic
+                information, stay connected, and make the most of
+                your college experience.
+            </p>
+
+            <ul class="features">
+                <li><span class="check">✓</span> Access your dashboard</li>
+                <li><span class="check">✓</span> View attendance and results</li>
+                <li><span class="check">✓</span> Get college updates</li>
+            </ul>
+
+            <div class="welcome-bottom">
+                Learn today. Lead tomorrow.
+            </div>
+        </section>
+
+        <!-- LOGIN AND REGISTER SECTION -->
+
+        <section class="form-panel">
+
+            <div class="form-header">
+                <h2 id="formTitle">Welcome Back!</h2>
+                <p id="formSubtitle">
+                    Sign in to continue to your college portal.
+                </p>
+            </div>
+
+            <div class="tabs">
+                <button type="button" class="tab active" id="signInTab">
+                    Sign In
+                </button>
+
+                <button type="button" class="tab" id="registerTab">
+                    Register
+                </button>
+            </div>
+
+            <!-- SIGN IN FORM -->
+
+            <form id="signInForm">
+
+                <div class="form-group">
+                    <label for="loginRole">Sign in as</label>
+                    <select id="loginRole" required>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginId" id="loginIdLabel">Student ID</label>
+                    <input
+                        type="text"
+                        id="loginId"
+                        placeholder="Enter your student ID"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+
+                    <div class="password-box">
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            data-target="loginPassword"
+                        >Show</button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember">
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+
+                    <a href="#" class="text-link" id="forgotPassword">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Sign In →
+                </button>
+
+            </form>
+
+            <!-- REGISTER FORM -->
+
+            <form id="registerForm" class="hidden">
+
+                <div class="form-group">
+                    <label for="registerRole">Register as</label>
+                    <select id="registerRole" required>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        minlength="2"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="registerId" id="registerIdLabel">Student ID</label>
+                    <input
+                        type="text"
+                        id="registerId"
+                        placeholder="Enter your student ID"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail">College Email</label>
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        placeholder="Enter your college email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword">Create Password</label>
+
+                    <div class="password-box">
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="At least 8 characters"
+                            minlength="8"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            data-target="registerPassword"
+                        >Show</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+
+                    <div class="password-box">
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Enter your password again"
+                            minlength="8"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            data-target="confirmPassword"
+                        >Show</button>
+                    </div>
+                </div>
+
+                <label class="terms">
+                    <input type="checkbox" id="acceptTerms" required>
+                    <span>
+                        I confirm that my information is correct and agree
+                        to the college portal's terms.
+                    </span>
+                </label>
+
+                <button type="submit" class="submit-btn">
+                    Create Account →
+                </button>
+
+            </form>
+
+            <div class="message" id="message" role="status" aria-live="polite"></div>
+
+            <div class="footer">
+                © <span id="year"></span> College Portal<br>
+                Designed for students, faculty and administrators.
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        const signInTab = document.getElementById("signInTab");
+        const registerTab = document.getElementById("registerTab");
+
+        const signInForm = document.getElementById("signInForm");
+        const registerForm = document.getElementById("registerForm");
+
+        const formTitle = document.getElementById("formTitle");
+        const formSubtitle = document.getElementById("formSubtitle");
+        const message = document.getElementById("message");
+
+        const loginRole = document.getElementById("loginRole");
+        const loginId = document.getElementById("loginId");
+        const loginIdLabel = document.getElementById("loginIdLabel");
+
+        const registerRole = document.getElementById("registerRole");
+        const registerId = document.getElementById("registerId");
+        const registerIdLabel = document.getElementById("registerIdLabel");
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Switch between Sign In and Register
+
+        function switchForm(showRegister) {
+            message.className = "message";
+            message.textContent = "";
+
+            signInForm.classList.toggle("hidden", showRegister);
+            registerForm.classList.toggle("hidden", !showRegister);
+
+            signInTab.classList.toggle("active", !showRegister);
+            registerTab.classList.toggle("active", showRegister);
+
+            if (showRegister) {
+                formTitle.textContent = "Create Account";
+                formSubtitle.textContent =
+                    "Register to get started with your college portal.";
+                document.title = "College Portal | Register";
+            } else {
+                formTitle.textContent = "Welcome Back!";
+                formSubtitle.textContent =
+                    "Sign in to continue to your college portal.";
+                document.title = "College Portal | Sign In";
+            }
+        }
+
+        signInTab.addEventListener("click", () => switchForm(false));
+        registerTab.addEventListener("click", () => switchForm(true));
+
+        // Change Sign In ID field based on selected role
+
+        function updateLoginRole() {
+            const role = loginRole.value;
+
+            if (role === "student") {
+                loginIdLabel.textContent = "Student ID";
+                loginId.placeholder = "Enter your student ID";
+            } else if (role === "faculty") {
+                loginIdLabel.textContent = "Faculty ID";
+                loginId.placeholder = "Enter your faculty ID";
+            } else {
+                loginIdLabel.textContent = "Admin ID";
+                loginId.placeholder = "Enter your admin ID";
+            }
+
+            loginId.value = "";
+        }
+
+        loginRole.addEventListener("change", updateLoginRole);
+
+        // Change Registration ID field based on selected role
+
+        function updateRegisterRole() {
+            if (registerRole.value === "faculty") {
+                registerIdLabel.textContent = "Faculty ID";
+                registerId.placeholder = "Enter your faculty ID";
+            } else {
+                registerIdLabel.textContent = "Student ID";
+                registerId.placeholder = "Enter your student ID";
+            }
+
+            registerId.value = "";
+        }
+
+        registerRole.addEventListener("change", updateRegisterRole);
+
+        // Show or hide passwords
+
+        document.querySelectorAll(".toggle-password").forEach(button => {
+            button.addEventListener("click", () => {
+                const input = document.getElementById(button.dataset.target);
+                const hidden = input.type === "password";
+
+                input.type = hidden ? "text" : "password";
+                button.textContent = hidden ? "Hide" : "Show";
+            });
+        });
+
+        // Display messages
+
+        function showMessage(text, type) {
+            message.textContent = text;
+            message.className = "message " + type;
+        }
+
+        // Sign In validation
+
+       // Sign In validation
+
+signInForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const role = loginRole.value;
+    const id = loginId.value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    if (!id || !password.trim()) {
+        showMessage("Please enter your ID and password.", "error");
+        return;
+    }
+
+    // Temporary Admin login for testing
+    if (role === "admin") {
+        if (id === "ADMIN001" && password === "Admin@123") {
+            showMessage(
+                "Admin login successful! Welcome to the College Portal.",
+                "success"
+            );
+        } else {
+            showMessage(
+                "Invalid Admin ID or password.",
+                "error"
+            );
+        }
+
+        return;
+    }
+
+    // Student and Faculty demo validation
+    showMessage(
+        role.charAt(0).toUpperCase() + role.slice(1) +
+        " sign-in form validated. Backend verification is not configured yet.",
+        "success"
+    );
+});
+
+        // Registration validation
+
+        registerForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            const fullName = document.getElementById("fullName").value.trim();
+            const id = registerId.value.trim();
+            const email = document.getElementById("registerEmail").value.trim();
+            const password = document.getElementById("registerPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const accepted = document.getElementById("acceptTerms").checked;
+            const role = registerRole.value;
+
+            if (!fullName || !id || !email) {
+                showMessage("Please complete all required fields.", "error");
+                return;
+            }
+
+            if (password.length < 8) {
+                showMessage("Password must contain at least 8 characters.", "error");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showMessage("Passwords do not match. Please try again.", "error");
+                document.getElementById("confirmPassword").focus();
+                return;
+            }
+
+            if (!accepted) {
+                showMessage("Please accept the terms before registering.", "error");
+                return;
+            }
+
+            showMessage(
+                role.charAt(0).toUpperCase() + role.slice(1) +
+                " registration form validated. Connect a backend to create your account.",
+                "success"
+            );
+        });
+
+        // Forgot password
+
+        document.getElementById("forgotPassword").addEventListener("click", event => {
+            event.preventDefault();
+
+            if (!loginId.value.trim()) {
+                showMessage("Enter your ID first.", "error");
+                loginId.focus();
+                return;
+            }
+
+            showMessage(
+                "Password recovery is not configured yet. Please contact your college administrator.",
+                "error"
+            );
+        });
+    </script>
+
+</body>
+</html>
