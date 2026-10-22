@@ -1,2 +1,497 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --dark: #1e1b4b;
+            --background: #f5f7ff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .contact-header {
+            text-align: center;
+            padding: 65px 20px 85px;
+            color: white;
+            background: linear-gradient(135deg, #312e81, #4f46e5, #7c3aed);
+        }
+
+        .contact-header span {
+            display: inline-block;
+            padding: 6px 15px;
+            margin-bottom: 18px;
+            border: 1px solid #ffffff70;
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-header h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 15px;
+        }
+
+        .contact-header p {
+            max-width: 600px;
+            margin: auto;
+            color: #e0e7ff;
+            font-size: 16px;
+        }
+
+        .contact-container {
+            width: min(1050px, 90%);
+            margin: -40px auto 60px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 25px;
+            position: relative;
+        }
+
+        .contact-details,
+        .contact-form {
+            padding: 32px;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 12px 35px rgba(31, 41, 55, 0.08);
+        }
+
+        .contact-details {
+            color: white;
+            background: linear-gradient(160deg, #312e81, #4338ca);
+        }
+
+        .contact-details h2,
+        .contact-form h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .contact-details > p,
+        .contact-form > p {
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .contact-details > p {
+            color: #dbeafe;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            min-width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            background: #ffffff20;
+            border-radius: 12px;
+            font-size: 20px;
+        }
+
+        .contact-item h3 {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            color: #dbeafe;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-item a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .contact-form > p {
+            color: var(--muted);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: #dc2626;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: white;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px #4f46e51c;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: var(--primary);
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #3730a3;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-status {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .form-status.success {
+            display: block;
+            color: #166534;
+            background: #f0fdf4;
+        }
+
+        .form-status.error {
+            display: block;
+            color: #b91c1c;
+            background: #fef2f2;
+        }
+
+        .contact-footer {
+            padding: 22px 15px;
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-header {
+                padding: 50px 20px 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-container {
+                width: 92%;
+            }
+
+            .contact-details,
+            .contact-form {
+                padding: 23px 18px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <section class="contact-header">
+            <span>Get in touch</span>
+            <h1>Contact Us On This Page </h1>
+            <p>
+                Have a question or need assistance?
+                We are here to help students, parents, and visitors.
+                Send us a message and connect with our college team.
+            </p>
+        </section>
+
+        <section class="contact-container">
+
+            <div class="contact-details">
+                <h2>Contact Information</h2>
+                <p>
+                    Reach out to us for admissions, academics,
+                    student support, or general enquiries.
+                </p>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>College Address, City, State, India</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h3>Email Address</h3>
+                        <p>
+                            <a href="mailto:college@example.com">
+                                college@example.com
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h3>Phone Number</h3>
+                        <p>
+                            <a href="tel:+910000000000">
+                                +91 00000 00000
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <div>
+                        <h3>Office Hours</h3>
+                        <p>Monday – Friday: 9 AM – 5 PM</p>
+                        <p>Saturday: 9 AM – 1 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <p>Fill out the form below to share your enquiry.</p>
+
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">
+                                Full Name <span class="required">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                minlength="2"
+                                maxlength="100"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address <span class="required">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                maxlength="254"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="Enter phone number"
+                                maxlength="20"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">
+                                Department <span class="required">*</span>
+                            </label>
+                            <select id="department" name="department" required>
+                                <option value="">Select department</option>
+                                <option value="Admissions">Admissions</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Management">Management</option>
+                                <option value="Commerce">Commerce</option>
+                                <option value="Examinations">Examinations</option>
+                                <option value="Student Support">Student Support</option>
+                                <option value="General Enquiry">General Enquiry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">
+                            Subject <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            placeholder="Enter message subject"
+                            maxlength="150"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">
+                            Your Message <span class="required">*</span>
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your message here..."
+                            minlength="10"
+                            maxlength="2000"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Send Message →
+                    </button>
+
+                    <div
+                        id="formStatus"
+                        class="form-status"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="contact-footer">
+        <p>
+            © <span id="year"></span> College Website. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        const form = document.getElementById("contactForm");
+        const status = document.getElementById("formStatus");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const name = document.getElementById("name").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (name.length < 2 || message.length < 10) {
+                status.textContent =
+                    "Please enter a valid name and a message of at least 10 characters.";
+                status.className = "form-status error";
+                return;
+            }
+
+            status.textContent =
+                "Your form is valid! This demo does not send messages yet.";
+            status.className = "form-status success";
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Validated ✓";
+
+            setTimeout(function () {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Message →";
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>
+=======
 <h1>this is contact page</h1>
 <p>contact details</p>
+>>>>>>> 23fccd8ee6092f0dec0450086263e175f8a3057c
+=======
+<h1>this is contact page</h1>
+<p>contact details</p>
+>>>>>>> 23fccd8ee6092f0dec0450086263e175f8a3057c
